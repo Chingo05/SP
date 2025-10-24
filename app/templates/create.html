@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Создать пользователя{% endblock %}
+
+{% block content %}
+<h2>Создать нового пользователя</h2>
+
+{% if message %}
+    <p style="color: green;"><strong>{{ message }}</strong></p>
+{% endif %}
+
+<form method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+    </div>
+    <div>
+        <button type="submit">Создать пользователя</button>
+    </div>
+</form>
+
+{% if users %}
+<h3>Текущие пользователи:</h3>
+<ul>
+    {% for user in users %}
+    <li>[ID: {{ user.id }}] {{ user.username }} ({{ user.email }}) - {{ user.full_name }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<p><a href="/users">Посмотреть всех пользователей</a></p>
+{% endblock %}

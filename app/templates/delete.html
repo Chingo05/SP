@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Удалить пользователя{% endblock %}
+
+{% block content %}
+<h2>Удалить пользователя</h2>
+
+{% if message %}
+    <p style="color: green;"><strong>{{ message }}</strong></p>
+{% endif %}
+
+{% if error %}
+    <p style="color: red;"><strong>{{ error }}</strong></p>
+{% endif %}
+
+{% if users %}
+<form method="post">
+    <div>
+        <label for="user_id">Выберите пользователя для удаления:</label>
+        <select id="user_id" name="user_id" required>
+            <option value="">-- Выберите пользователя --</option>
+            {% for user in users %}
+            <option value="{{ user.id }}">[ID: {{ user.id }}] {{ user.username }} ({{ user.email }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <button type="submit">Удалить пользователя</button>
+    </div>
+</form>
+
+<h3>Текущие пользователи:</h3>
+<ul>
+    {% for user in users %}
+    <li><strong>[ID: {{ user.id }}] {{ user.username }}</strong> - {{ user.email }} - {{ user.full_name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>Нет пользователей для удаления.</p>
+{% endif %}
+
+<p><a href="/create">Создать нового пользователя</a></p>
+<p><a href="/users">Посмотреть всех пользователей</a></p>
+{% endblock %}

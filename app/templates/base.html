@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}User Management{% endblock %}</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Пользователи</h1>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/about">О проекте</a> |
+        <a href="/users">Все пользователи</a> |
+        <a href="/create">Создать пользователя</a> |
+        <a href="/delete">Удалить пользователя</a>
+    </nav>
+    <hr>
+    
+    {% block content %}{% endblock %}
+    
+    <hr>
+</body>
+</html>

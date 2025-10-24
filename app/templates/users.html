@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Все пользователи{% endblock %}
+
+{% block content %}
+<h2>Список всех пользователей</h2>
+
+{% if users %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Full Name</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.full_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>Нет пользователей в системе.</p>
+{% endif %}
+
+<p><a href="/create">Создать нового пользователя</a></p>
+{% endblock %}
